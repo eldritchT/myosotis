@@ -16,5 +16,5 @@ make run
 ```
 
 ## Credits
-- [Buildroot](https//buildroot.org)
+- [Buildroot](https://buildroot.org)
 - [R36S board config](https://github.com/haoict/buildroot-r36s/tree/develop/board/r36s) by [haoict](https://github.com/haoict)
