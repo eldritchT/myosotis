@@ -1,0 +1,12 @@
+[Unit]
+Description=PipeWire Session Manager
+After=pipewire.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/wireplumber
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

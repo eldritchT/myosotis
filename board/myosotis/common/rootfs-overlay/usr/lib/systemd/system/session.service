@@ -1,0 +1,22 @@
+[Unit]
+Description=Myosotis Wayland Session
+After=pipewire.service wireplumber.service seatd.service dbus-broker.service
+Wants=pipewire.service wireplumber.service seatd.service dbus-broker.service
+
+[Service]
+Type=exec
+ExecStart=
+ExecStart=/usr/bin/dbus-run-session -- /usr/bin/myosotis-session-run
+Environment=
+Restart=always
+RestartSec=2
+User=myosotis
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=XDG_SESSION_TYPE=wayland
+Environment=XDG_SESSION_DESKTOP=sway
+Environment=XDG_CURRENT_DESKTOP=sway
+RuntimeDirectory=user/1000
+RuntimeDirectoryMode=0700
+
+[Install]
+WantedBy=multi-user.target

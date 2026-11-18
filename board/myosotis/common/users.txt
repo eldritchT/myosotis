@@ -1,0 +1,4 @@
+myosotis 1000 myosotis 1000 - /home/myosotis /bin/sh audio,video,input,render,plugdev,seat Graphical session user
+- -1 input -1 - - - - -
+- -1 render -1 - - - - -
+- -1 seat -1 - - - - -

@@ -1,0 +1,24 @@
+set $mod Mod4
+set $term foot
+
+output * bg /usr/share/myosotis/wallpaper.png fill
+
+input type:keyboard {
+    xkb_layout us
+    repeat_rate 40
+    repeat_delay 400
+}
+
+default_border pixel 1
+gaps inner 4
+
+# fastfetch opens in a terminal at session start
+exec $term
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+e exit
+
+bar {
+    swaybar_command swaybar
+}

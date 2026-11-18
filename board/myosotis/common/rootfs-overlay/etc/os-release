@@ -1,0 +1,9 @@
+NAME="myosotis"
+ID=myosotis
+ID_LIKE=buildroot
+VERSION="0.1"
+VERSION_ID=0.1
+PRETTY_NAME="myosotis"
+ANSI_COLOR="0;36"
+HOME_URL="https://github.com/eldritchT/myosotis"
+LOGO=myosotis

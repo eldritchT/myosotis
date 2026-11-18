@@ -1,0 +1,35 @@
+#!/bin/sh
+
+set -u
+
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/1000}"
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=myosotis
+export XDG_CURRENT_DESKTOP=myosotis
+export XDG_CONFIG_DIRS=/etc/xdg
+export XDG_CONFIG_HOME="${HOME:-/home/myosotis}/.config"
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export TERM=xterm-256color
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM=wayland
+export SDL_VIDEODRIVER=wayland
+export GST_GL_WINDOW=wayland
+export ELM_DISPLAY=wl
+
+LOGDIR="${HOME:-/home/myosotis}/.local/state/myosotis"
+mkdir -p "$LOGDIR" 2>/dev/null || LOGDIR=/tmp
+
+rm -f "$XDG_RUNTIME_DIR"/wayland-* \
+      "$XDG_RUNTIME_DIR"/pipewire-* \
+      "$XDG_RUNTIME_DIR"/wireplumber-* 2>/dev/null
+
+pipewire >>"$LOGDIR/pipewire.log" 2>&1 &
+i=0
+while [ ! -S "$XDG_RUNTIME_DIR/pipewire-0" ] && [ "$i" -lt 50 ]; do
+	i=$((i + 1))
+	sleep 0.1
+done
+wireplumber >>"$LOGDIR/wireplumber.log" 2>&1 &
+
+exec sway >"$LOGDIR/sway.log" 2>&1

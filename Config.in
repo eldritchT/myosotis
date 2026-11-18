@@ -1,0 +1,10 @@
+menu "myosotis config"
+
+config BR2_MYOSOTIS_DEBUG
+    bool "enable debug extras"
+
+config BR2_MYOSOTIS_SESSION_USER
+	string "Graphical session user (must match users.txt)"
+	default "myosotis"
+
+endmenu

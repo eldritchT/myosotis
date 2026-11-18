@@ -1,0 +1,12 @@
+[Unit]
+Description=D-Bus System Message Bus
+After=systemd-journald.service
+
+[Service]
+Type=simple
+BusName=org.freedesktop.DBus
+ExecStart=/usr/bin/dbus-broker --systemd-activation
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

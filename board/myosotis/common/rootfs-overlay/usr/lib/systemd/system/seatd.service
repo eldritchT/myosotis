@@ -1,0 +1,13 @@
+[Unit]
+Description=seatd - Seat management daemon
+After=dbus-broker.socket
+Before=pipewire.service wireplumber.service weston.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/seatd -g video
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+/buildroot/
+/buildroot-*.tar.xz
+/output/
+/.config
+/ccache/
